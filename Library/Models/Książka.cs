@@ -5,11 +5,11 @@ using System.Collections.Generic;
 
 namespace Library.Models
 {
-    public partial class Książki
+    public partial class Książka
     {
-        public Książki()
+        public Książka()
         {
-            Wypożyczenia = new HashSet<Wypożyczenia>();
+            Wypożyczenia = new HashSet<Wypożyczenie>();
         }
 
         public int Id { get; set; }
@@ -21,8 +21,8 @@ namespace Library.Models
         public int Stan { get; set; }
         public int Dostępność { get; set; }
 
-        public virtual Autorzy IdautorNavigation { get; set; }
-        public virtual Gatunki IdgatunekNavigation { get; set; }
-        public virtual ICollection<Wypożyczenia> Wypożyczenia { get; set; }
+        public virtual Autor IdautorNavigation { get; set; }
+        public virtual Gatunek IdgatunekNavigation { get; set; }
+        public virtual ICollection<Wypożyczenie> Wypożyczenia { get; set; }
     }
 }

@@ -5,11 +5,11 @@ using System.Collections.Generic;
 
 namespace Library.Models
 {
-    public partial class Klienci
+    public partial class Klient
     {
-        public Klienci()
+        public Klient()
         {
-            Wypożyczenia = new HashSet<Wypożyczenia>();
+            Wypożyczenia = new HashSet<Wypożyczenie>();
         }
 
         public int Id { get; set; }
@@ -21,6 +21,6 @@ namespace Library.Models
         public string AdresEmail { get; set; }
         public DateTime DataRejestracji { get; set; }
 
-        public virtual ICollection<Wypożyczenia> Wypożyczenia { get; set; }
+        public virtual ICollection<Wypożyczenie> Wypożyczenia { get; set; }
     }
 }

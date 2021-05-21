@@ -5,16 +5,16 @@ using System.Collections.Generic;
 
 namespace Library.Models
 {
-    public partial class Gatunki
+    public partial class Gatunek
     {
-        public Gatunki()
+        public Gatunek()
         {
-            Książkis = new HashSet<Książki>();
+            Książki = new HashSet<Książka>();
         }
 
         public int Id { get; set; }
         public string NazwaGatunku { get; set; }
 
-        public virtual ICollection<Książki> Książkis { get; set; }
+        public virtual ICollection<Książka> Książki { get; set; }
     }
 }

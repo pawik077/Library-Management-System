@@ -17,12 +17,12 @@ namespace Library.Models
         {
         }
 
-        public virtual DbSet<Autorzy> Autorzies { get; set; }
-        public virtual DbSet<Gatunki> Gatunkis { get; set; }
-        public virtual DbSet<Klienci> Kliencis { get; set; }
-        public virtual DbSet<Książki> Książkis { get; set; }
-        public virtual DbSet<Pracownicy> Pracownicies { get; set; }
-        public virtual DbSet<Wypożyczenia> Wypożyczenia { get; set; }
+        public virtual DbSet<Autor> Autorzy { get; set; }
+        public virtual DbSet<Gatunek> Gatunki { get; set; }
+        public virtual DbSet<Klient> Klienci { get; set; }
+        public virtual DbSet<Książka> Książki { get; set; }
+        public virtual DbSet<Pracownik> Pracownicy { get; set; }
+        public virtual DbSet<Wypożyczenie> Wypożyczenia { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -37,7 +37,7 @@ namespace Library.Models
         {
             modelBuilder.HasAnnotation("Relational:Collation", "Latin1_General_CI_AS");
 
-            modelBuilder.Entity<Autorzy>(entity =>
+            modelBuilder.Entity<Autor>(entity =>
             {
                 entity.ToTable("Autorzy");
 
@@ -53,7 +53,7 @@ namespace Library.Models
                     .HasColumnName("Nazwisko_Autora");
             });
 
-            modelBuilder.Entity<Gatunki>(entity =>
+            modelBuilder.Entity<Gatunek>(entity =>
             {
                 entity.ToTable("Gatunki");
 
@@ -65,7 +65,7 @@ namespace Library.Models
                     .HasColumnName("Nazwa_Gatunku");
             });
 
-            modelBuilder.Entity<Klienci>(entity =>
+            modelBuilder.Entity<Klient>(entity =>
             {
                 entity.ToTable("Klienci");
 
@@ -106,7 +106,7 @@ namespace Library.Models
                     .IsFixedLength(true);
             });
 
-            modelBuilder.Entity<Książki>(entity =>
+            modelBuilder.Entity<Książka>(entity =>
             {
                 entity.ToTable("Książki");
 
@@ -121,19 +121,19 @@ namespace Library.Models
                     .HasMaxLength(255);
 
                 entity.HasOne(d => d.IdautorNavigation)
-                    .WithMany(p => p.Książkis)
+                    .WithMany(p => p.Książki)
                     .HasForeignKey(d => d.Idautor)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Książki_Autorzy");
 
                 entity.HasOne(d => d.IdgatunekNavigation)
-                    .WithMany(p => p.Książkis)
+                    .WithMany(p => p.Książki)
                     .HasForeignKey(d => d.Idgatunek)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Książki_Gatunki");
             });
 
-            modelBuilder.Entity<Pracownicy>(entity =>
+            modelBuilder.Entity<Pracownik>(entity =>
             {
                 entity.HasNoKey();
 
@@ -165,7 +165,7 @@ namespace Library.Models
                     .HasColumnName("Nazwisko_Pracownika");
             });
 
-            modelBuilder.Entity<Wypożyczenia>(entity =>
+            modelBuilder.Entity<Wypożyczenie>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
 

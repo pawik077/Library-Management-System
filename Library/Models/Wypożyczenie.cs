@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Library.Models
 {
-    public partial class Wypożyczenia
+    public partial class Wypożyczenie
     {
         public int Id { get; set; }
         public int Idklient { get; set; }
@@ -13,7 +13,7 @@ namespace Library.Models
         public DateTime DataWypożyczenia { get; set; }
         public DateTime? DataZwrotu { get; set; }
 
-        public virtual Klienci IdklientNavigation { get; set; }
-        public virtual Książki IdksiążkaNavigation { get; set; }
+        public virtual Klient IdklientNavigation { get; set; }
+        public virtual Książka IdksiążkaNavigation { get; set; }
     }
 }

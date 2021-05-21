@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Library.Models
 {
-    public partial class Pracownicy
+    public partial class Pracownik
     {
         public int Id { get; set; }
         public string ImięPracownika { get; set; }
