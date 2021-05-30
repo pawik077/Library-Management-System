@@ -23,6 +23,8 @@ namespace Library.Models
         public virtual DbSet<Książka> Książki { get; set; }
         public virtual DbSet<Pracownik> Pracownicy { get; set; }
         public virtual DbSet<Wypożyczenie> Wypożyczenia { get; set; }
+        //for views
+        public DbSet<FindBook> FindBookModels { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
