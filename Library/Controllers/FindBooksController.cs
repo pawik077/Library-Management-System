@@ -16,11 +16,10 @@ namespace Library.Controllers {
 			_db = db;
 		}
 
-		public IActionResult Index() {
-			string input = "'%'";
+		public IActionResult Index(string data) {
 			string sql = @$"SELECT [Książki].[ID], [Tytuł], [Imię_Autora], [Nazwisko_Autora], [Nazwa_Gatunku], [Stan], [Dostępność], [Opis], [Okładka] FROM Książki 
 			INNER JOIN[Autorzy] ON[Książki].[IDAutor] = [Autorzy].[ID] INNER JOIN[Gatunki] ON[Książki].[IDGatunek] = [Gatunki].[ID]
-			WHERE CONCAT([Imię_Autora], ' ', [Nazwisko_Autora]) LIKE(('%' + {input} + '%') COLLATE SQL_Latin1_General_CP1253_CI_AI) OR[Tytuł] LIKE(('%' + {input} + '%') COLLATE SQL_Latin1_General_CP1253_CI_AI)
+			WHERE CONCAT([Imię_Autora], ' ', [Nazwisko_Autora]) LIKE(('%' + '{data}' + '%') COLLATE SQL_Latin1_General_CP1253_CI_AI) OR[Tytuł] LIKE(('%' + '{data}' + '%') COLLATE SQL_Latin1_General_CP1253_CI_AI)
 			ORDER BY[Nazwisko_Autora] ASC";
 			var BooksViewModel = _db.FindBookModels.FromSqlRaw<FindBook>(sql);
 			return View(BooksViewModel);
