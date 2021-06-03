@@ -24,5 +24,8 @@ namespace Library.Controllers {
 			var BooksViewModel = _db.FindBookModels.FromSqlRaw<FindBook>(sql);
 			return View(BooksViewModel);
 		}
+		public IActionResult Create() {
+			return View();
+		}
 	}
 }

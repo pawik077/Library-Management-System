@@ -23,5 +23,15 @@ namespace Library.Controllers {
 			var ClientsViewModel = _db.Klienci.FromSqlRaw(sql);
 			return View(ClientsViewModel);
 		}
+		public IActionResult Create(Klient klient) {
+			if(klient.ImięKlienta == null)
+				return View();
+			else {
+				_db.Klienci.Add(klient);
+				_db.SaveChanges();
+				return RedirectToAction("Index");
+
+			}
+		}
 	}
 }
