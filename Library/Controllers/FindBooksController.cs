@@ -52,5 +52,38 @@ namespace Library.Controllers {
 				return RedirectToAction("Index");
 			}
 		}
+		public IActionResult Delete(int? id) {
+			Książka książka = _db.Książki.Find(id);
+			Autor autor = _db.Autorzy.SingleOrDefault(a => a.Id == książka.Idautor);
+			Gatunek gatunek = _db.Gatunki.SingleOrDefault(g => g.Id == książka.Idgatunek);
+			FindBook book = new FindBook {
+				Tytuł = książka.Tytuł,
+				Imię_Autora = autor.ImięAutora,
+				Nazwisko_Autora = autor.NazwiskoAutora,
+				Nazwa_Gatunku = gatunek.NazwaGatunku,
+				Stan = książka.Stan,
+				Dostępność = książka.Dostępność,
+				Opis = książka.Opis,
+				Okładka = książka.Okładka
+			};
+			return View(book);
+		}
+		[HttpPost, ActionName("Delete")]
+		public IActionResult DeleteConfirmed(int? id) {
+			Książka książka = _db.Książki.Find(id);
+			Autor autor = _db.Autorzy.SingleOrDefault(a => a.Id == książka.Idautor);
+			Gatunek gatunek = _db.Gatunki.SingleOrDefault(g => g.Id == książka.Idgatunek);
+			_db.Książki.Remove(książka);
+			_db.SaveChanges();
+			if(_db.Książki.Count(k => k.Idautor == autor.Id) == 0) {
+				_db.Autorzy.Remove(autor);
+				_db.SaveChanges();
+			}
+			if(_db.Książki.Count(k => k.Idgatunek == gatunek.Id) == 0) {
+				_db.Gatunki.Remove(gatunek);
+				_db.SaveChanges();
+			}
+			return RedirectToAction("Index");
+		}
 	}
 }
