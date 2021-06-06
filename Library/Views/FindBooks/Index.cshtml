@@ -19,11 +19,14 @@
             <th>
                 @Html.DisplayNameFor(model => model.Tytuł)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Imię_Autora)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Nazwisko_Autora)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.NameConcatenation)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Nazwa_Gatunku)
@@ -49,11 +52,14 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Tytuł)
                 </td>
-                <td>
+                @*<td>
                     @Html.DisplayFor(modelItem => item.Imię_Autora)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Nazwisko_Autora)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameConcatenation)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Nazwa_Gatunku)

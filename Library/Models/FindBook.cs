@@ -13,7 +13,7 @@ namespace Library.Models {
 		public string Imię_Autora { get; set; }
 		[Required]
 		public string Nazwisko_Autora { get; set; }
-		[Required]
+		[Required, Display(Name = "Gatunek")]
 		public string Nazwa_Gatunku { get; set; }
 		[Required]
 		public int Stan { get; set; }
@@ -21,5 +21,11 @@ namespace Library.Models {
 		public int Dostępność { get; set; }
 		public string Opis { get; set; }
 		public byte[] Okładka { get; set; }
+		[Display(Name = "Autor")]
+		public string NameConcatenation {
+			get {
+				return Imię_Autora + " " + Nazwisko_Autora;
+			}
+		}
 	}
 }
