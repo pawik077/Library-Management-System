@@ -16,11 +16,14 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ImięKlienta)
+            @*<th>
+                Html.DisplayNameFor(model => model.ImięKlienta)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.NazwiskoKlienta)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.NameConcatenation)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Pesel)
@@ -35,7 +38,7 @@
                 @Html.DisplayNameFor(model => model.AdresEmail)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DataRejestracji)
+                @Html.DisplayNameFor(model => model.ShortDate)
             </th>
             <th></th>
         </tr>
@@ -43,11 +46,14 @@
     <tbody>
         @foreach(var item in Model) {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ImięKlienta)
+                @*<td>
+                    Html.DisplayFor(modelItem => item.ImięKlienta)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.NazwiskoKlienta)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameConcatenation)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Pesel)
@@ -62,7 +68,7 @@
                     @Html.DisplayFor(modelItem => item.AdresEmail)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.DataRejestracji)
+                    @Html.DisplayFor(modelItem => item.ShortDate)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
