@@ -13,9 +13,9 @@ namespace Library.Models
         }
         [Required]
         public int Id { get; set; }
-        [Required]
+        [Required, Display(Name = "Imię klienta")]
         public string ImięKlienta { get; set; }
-        [Required]
+        [Required, Display(Name = "Nazwisko klienta")]
         public string NazwiskoKlienta { get; set; }
         [Display(Name = "PESEL")]
         public string Pesel { get; set; }
@@ -25,7 +25,7 @@ namespace Library.Models
         public string NumerTelefonu { get; set; }
         [Display(Name = "Adres e-mail")]
         public string AdresEmail { get; set; }
-        [Required]
+        [Required, Display(Name = "Data rejestracji")]
         public DateTime DataRejestracji { get; set; }
 
         public virtual ICollection<Wypożyczenie> Wypożyczenia { get; set; }

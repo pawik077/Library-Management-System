@@ -10,8 +10,9 @@ namespace Library.Models {
 		public int ID { get; set; }
 		[Required]
 		public string Tytuł { get; set; }
+		[Display(Name = "Imię autora")]
 		public string Imię_Autora { get; set; }
-		[Required]
+		[Required, Display(Name = "Nazwisko autora")]
 		public string Nazwisko_Autora { get; set; }
 		[Required, Display(Name = "Gatunek")]
 		public string Nazwa_Gatunku { get; set; }
