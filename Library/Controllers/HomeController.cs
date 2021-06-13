@@ -20,21 +20,6 @@ namespace Library.Controllers {
 			return View();
 		}
 
-		public IActionResult Privacy() {
-			return View();
-		}
-
-		public IActionResult FindBook() {
-			List<FindBook> list;
-			string input = "'%'";
-			string sql = $@"SELECT [Książki].[ID], [Tytuł], [Imię_Autora], [Nazwisko_Autora], [Nazwa_Gatunku], [Stan], [Dostępność], [Opis], [Okładka] FROM Książki 
-	INNER JOIN[Autorzy] ON[Książki].[IDAutor] = [Autorzy].[ID] INNER JOIN[Gatunki] ON[Książki].[IDGatunek] = [Gatunki].[ID]
-	WHERE CONCAT([Imię_Autora], ' ', [Nazwisko_Autora]) LIKE(('%' + {input} + '%') COLLATE SQL_Latin1_General_CP1253_CI_AI) OR[Tytuł] LIKE(('%' + {input} + '%') COLLATE SQL_Latin1_General_CP1253_CI_AI)
-	ORDER BY[Nazwisko_Autora] ASC";
-			list = _db.FindBookModels.FromSqlRaw<FindBook>(sql).ToList();
-			return View();
-		}
-
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 		public IActionResult Error() {
 			return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

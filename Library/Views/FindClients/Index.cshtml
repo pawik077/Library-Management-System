@@ -16,12 +16,6 @@
 <table class="table">
     <thead>
         <tr>
-            @*<th>
-                Html.DisplayNameFor(model => model.ImięKlienta)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NazwiskoKlienta)
-            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.NameConcatenation)
             </th>
@@ -46,12 +40,6 @@
     <tbody>
         @foreach(var item in Model) {
             <tr>
-                @*<td>
-                    Html.DisplayFor(modelItem => item.ImięKlienta)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NazwiskoKlienta)
-                </td>*@
                 <td>
                     @Html.DisplayFor(modelItem => item.NameConcatenation)
                 </td>
@@ -73,7 +61,6 @@
                 <td>
                     <a asp-action="RentIndex" asp-route-id="@item.Id">Wypożyczenia</a> |
                     <a asp-action="Edit" asp-route-id="@item.Id">Edytuj</a> |
-                    @*<a asp-action="Details" asp-route-id="@item.Id">Details</a> |*@
                     <a asp-action="Delete" asp-route-id="@item.Id">Usuń</a>
                 </td>
             </tr>

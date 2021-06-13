@@ -58,14 +58,15 @@
             @Html.DisplayFor(model => model.book.Okładka)
         </dd>
         @using(Html.BeginForm("Lend", "FindBooks", FormMethod.Post)) {
-            <dt class="col-sm-2">
-                Klient:
-            </dt>
-            <dd>
-                @Html.DropDownListFor(m => m.klient.Id, Model.clientList, new { @class = "form-control" })
-            </dd>
-            <input type="hidden" asp-for="book.ID" />
-            <input type="submit" value="Wypożycz" class="btn btn-danger" /> @:|
-            <a asp-action = "Index">Powrót do listy</a>
-        }
+                    <dt class="col-sm-2">
+                        Klient:
+                    </dt>
+                    <dd>
+                        @Html.DropDownListFor(m => m.klient.Id, Model.clientList, new { @class = "form-control" })
+                    </dd>
+                    <input type="hidden" asp-for="book.ID" />
+                    <input type="submit" value="Wypożycz" class="btn btn-danger" /> @:|
+                    <a asp-action="Index">Powrót do listy</a>
+            }
+    </dl>
 </div>

@@ -19,12 +19,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Tytuł)
             </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.Imię_Autora)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nazwisko_Autora)
-            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.NameConcatenation)
             </th>
@@ -52,12 +46,6 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Tytuł)
                 </td>
-                @*<td>
-                    @Html.DisplayFor(modelItem => item.Imię_Autora)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nazwisko_Autora)
-                </td>*@
                 <td>
                     @Html.DisplayFor(modelItem => item.NameConcatenation)
                 </td>
@@ -78,8 +66,6 @@
                 </td>
                 <td>
                     <a asp-action="Lend" asp-route-id="@item.ID">Wypożycz</a> |
-                    @*<a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |*@
-                    @*<a asp-action="Details" asp-route-id="@item.ID">Details</a> |*@
                     <a asp-action="Delete" asp-route-id="@item.ID">Usuń</a>
                 </td>
             </tr>
