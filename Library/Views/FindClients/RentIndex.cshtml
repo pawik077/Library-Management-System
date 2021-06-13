@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Library.Models.RentModel>
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h1>Wypożyczone książki</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Tytuł)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Imię_Autora)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nazwisko_Autora)
+            </th>*@
+            @*<th>
+                @Html.DisplayNameFor(model => model.Imię_Klienta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nazwisko_Klienta)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.AuthorNameConcatenation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClientNameConcatenation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShortRentDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShortReturnDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tytuł)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Imię_Autora)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nazwisko_Autora)
+            </td>*@
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Imię_Klienta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nazwisko_Klienta)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.AuthorNameConcatenation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientNameConcatenation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortRentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortReturnDate)
+            </td>
+            <td>
+                @*<a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>*@
+                @if(item.Data_zwrotu == null) { 
+                    <a asp-action="Return" asp-route-id="@item.ID">Przeprowadź zwrot</a>
+                }    
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

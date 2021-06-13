@@ -71,6 +71,7 @@
                     @Html.DisplayFor(modelItem => item.ShortDate)
                 </td>
                 <td>
+                    <a asp-action="RentIndex" asp-route-id="@item.Id">Wypożyczenia</a> |
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
