@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Http;
 
 namespace Library.Controllers {
 	public class FindBooksController : Controller {
@@ -83,6 +85,39 @@ namespace Library.Controllers {
 				_db.Gatunki.Remove(gatunek);
 				_db.SaveChanges();
 			}
+			return RedirectToAction("Index");
+		}
+		public IActionResult Lend(int? id) {
+			Książka książka = _db.Książki.Find(id);
+			Autor autor = _db.Autorzy.SingleOrDefault(a => a.Id == książka.Idautor);
+			Gatunek gatunek = _db.Gatunki.SingleOrDefault(g => g.Id == książka.Idgatunek);
+			FindBook book = new FindBook {
+				Tytuł = książka.Tytuł,
+				Imię_Autora = autor.ImięAutora,
+				Nazwisko_Autora = autor.NazwiskoAutora,
+				Nazwa_Gatunku = gatunek.NazwaGatunku,
+				Stan = książka.Stan,
+				Dostępność = książka.Dostępność,
+				Opis = książka.Opis,
+				Okładka = książka.Okładka
+			};
+			LendModel lendModel = new LendModel();
+			lendModel.book = book;
+			lendModel.clientList = new SelectList(_db.Klienci, "Id", "NameConcatenation");
+			return View(lendModel);
+		}
+		[HttpPost, ActionName("Lend")]
+		public IActionResult LendConfirmed(int? id, LendModel model) {
+			int bookID = id.Value;
+			int clientID = model.klient.Id;
+			DateTime date = DateTime.Today;
+			Wypożyczenie wypożyczenie = new();
+			wypożyczenie.Idksiążka = bookID;
+			wypożyczenie.Idklient = clientID;
+			wypożyczenie.DataWypożyczenia = date;
+			_db.Wypożyczenia.Add(wypożyczenie);
+			--_db.Książki.Find(bookID).Dostępność;
+			_db.SaveChanges();
 			return RedirectToAction("Index");
 		}
 	}
