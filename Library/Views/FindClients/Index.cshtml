@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<Library.Models.Klient>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Lista klientów";
 }
 
-<h1>Index</h1>
+<h1>Klienci</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Utwórz nowego klienta</a>
 </p>
 @using(Html.BeginForm("Index", "FindClients", FormMethod.Post)) {
     <input type="text" name="data" id="data" />
@@ -72,9 +72,9 @@
                 </td>
                 <td>
                     <a asp-action="RentIndex" asp-route-id="@item.Id">Wypożyczenia</a> |
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edytuj</a> |
+                    @*<a asp-action="Details" asp-route-id="@item.Id">Details</a> |*@
+                    <a asp-action="Delete" asp-route-id="@item.Id">Usuń</a>
                 </td>
             </tr>
         }

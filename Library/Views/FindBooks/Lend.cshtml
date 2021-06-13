@@ -1,13 +1,12 @@
 ﻿@model Library.Models.LendModel
 
 @{
-    ViewData["Title"] = "Lend";
+    ViewData["Title"] = "Nowe wypożyczenie";
 }
 
-<h1>Lend</h1>
+<h1>Nowe wypożyczenie</h1>
 
 <div>
-    <h4>FindBook</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -67,6 +66,6 @@
             </dd>
             <input type="hidden" asp-for="book.ID" />
             <input type="submit" value="Wypożycz" class="btn btn-danger" /> @:|
-            <a asp-action = "Index">Back to List</a>
+            <a asp-action = "Index">Powrót do listy</a>
         }
 </div>
