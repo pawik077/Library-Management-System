@@ -8,6 +8,7 @@ using System.ComponentModel.DataAnnotations;
 namespace Library.Models {
 	public class RentModel {
 		public int ID { get; set; }
+		public int IDKlient { get; set; }
 		public string Tytuł { get; set; }
 		[Display(Name = "Imię autora")]
 		public string Imię_Autora { get; set; }

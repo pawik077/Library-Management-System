@@ -34,7 +34,7 @@ namespace Library.Controllers {
 			}
 		}
 		public IActionResult RentIndex(int? id) {
-			string sql = $@"SELECT [Wypożyczenia].[ID], [Tytuł], [Imię_Autora], [Nazwisko_Autora], [Imię_Klienta], [Nazwisko_Klienta], [Data_wypożyczenia], [Data_zwrotu]
+			string sql = $@"SELECT [Wypożyczenia].[ID], [Wypożyczenia].[IDKlient] , [Tytuł], [Imię_Autora], [Nazwisko_Autora], [Imię_Klienta], [Nazwisko_Klienta], [Data_wypożyczenia], [Data_zwrotu]
 			FROM Wypożyczenia INNER JOIN [Książki] ON [Wypożyczenia].IDKsiążka = [Książki].[ID]
 			INNER JOIN [Autorzy] ON [Książki].[IDAutor] = [Autorzy].[ID]
 			INNER JOIN [Klienci] ON [Wypożyczenia].IDKlient = [Klienci].[ID]
@@ -49,6 +49,7 @@ namespace Library.Controllers {
 			Klient klient = _db.Klienci.Single(k => k.Id == wypożyczenie.Idklient);
 			RentModel rentModel = new RentModel {
 				Tytuł = książka.Tytuł,
+				IDKlient = wypożyczenie.Idklient,
 				Imię_Autora = autor.ImięAutora,
 				Nazwisko_Autora = autor.NazwiskoAutora,
 				Imię_Klienta = klient.ImięKlienta,
