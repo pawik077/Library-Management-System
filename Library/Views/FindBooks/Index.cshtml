@@ -65,7 +65,9 @@
                     @Html.DisplayFor(modelItem => item.Okładka)
                 </td>
                 <td>
-                    <a asp-action="Lend" asp-route-id="@item.ID">Wypożycz</a> |
+                    @if(item.Dostępność > 0) {
+                        <a asp-action="Lend" asp-route-id="@item.ID">Wypożycz</a> @:|
+                    }
                     <a asp-action="Delete" asp-route-id="@item.ID">Usuń</a>
                 </td>
             </tr>
